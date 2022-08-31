@@ -7,18 +7,18 @@ import React, { useState } from 'react'
 const Associates = (props)=> {
 
 	const {officers, setOfficers} = props;
+	console.log({officers})
 	
 		return (
-		  <ul>
-			{officers?.map(officer => {
-				<li key={officer.id}>
+		  <ul>		  
+			{officers?.officers?.map(officer => {
+				<li key={officer._id}>
 				<Link to={`/associates/${officer._id}`}>
-				{officer.email} {officer.firstName} {officer.lastName}
+				{officer.email}			
+				
 				</Link>
 				</li>})
-			};
-	
-			
+			}			
 		  </ul>
 		)
 	  
