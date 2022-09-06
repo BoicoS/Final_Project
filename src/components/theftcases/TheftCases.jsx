@@ -4,19 +4,25 @@ import { Switch, Route, Link } from 'react-router-dom'
 // import TaskDetail from '../task-detail/TaskDetail'
 
 const TheftCases = (props) => {
+
+	const {cases, setCases} = props;
+	// const {officers, setOfficers}=props;
 	return (
 		
-		
-		<h1>База угонов</h1>
-		// {/* <Switch>
-		// <Route exact path={'/'}>
-		// 	<Board {...props} />
-		// </Route>
+		<ul>		  
+		{cases?.data?.map(thcase => (
+			<li key={thcase._id}>
+			<Link to={`/cases/${thcase._id}`}>
+			{thcase.licenseNumber}			
+			
+			</Link>
+			</li>))
+		}
 
-		// <Route path={'/tasks/:taskId'}>
-		// 	<TaskDetail {...props} />
-		// </Route>
-		// </Switch> */}
+
+				
+	  </ul>
+		
 				
 		
 	)
