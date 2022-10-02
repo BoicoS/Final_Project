@@ -53,7 +53,7 @@ const Header = () => {
           </li>
 
           <li>
-            <NavLink to="/theftcases" activeClassName="is-active">
+            <NavLink to="/cases" activeClassName="is-active">
              База угонов
             </NavLink>
           </li>

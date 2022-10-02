@@ -8,11 +8,11 @@ import Main from './components/main/Main'
 import axios from 'axios'
 
 
-const api = axios.create({
-	baseURL:"https://sf-final-project.herokuapp.com/api"
-}
+// const api = axios.create({
+// 	baseURL:"https://sf-final-project.herokuapp.com/api"
+// }
 
-)
+// )
 
 
 function App() {
@@ -28,11 +28,17 @@ function App() {
 	)
 	
 	const [officers, setOfficers] = useState([]);
-	// var persons = [];
+
+	const [cases, setCases] = useState([]);
+
+	// const [resourceType, setResourceTypes] = useState('officers');
+
+	// const [items, setItems] = useState([]);
+	
 	
 	useEffect(() => {
 		
-	api.get('/officers/', {headers:{Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyZTU3MjBiYzgyOTQxMTNiMWVkM2FmMiIsImlhdCI6MTY2MTg0MTYzOCwiZXhwIjoxNjYyNDQ2NDM4fQ.wn4a0Rr_db8OSRui5DqjmHtjo3GMTnk1aJcWp2Z-i28`}})
+	api.get(`/officers/`, {headers:{Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMzlkZTZkM2E2NWMyMDVkOGQyYTk4OCIsImlhdCI6MTY2NDczNjkwNywiZXhwIjoxNjY1MzQxNzA3fQ.lp5F3J8Ck1jD127i3uNVRFq5nd1QNqAEXGA2iitggd4`}})
 		  .then(res => {
 			setOfficers(res.data);
 			//  console.log("Persons" +persons);
@@ -42,14 +48,31 @@ function App() {
 			console.log(error);			
 		  })
 		  ;
-	// const initialState = persons;
+	
 	  }, [])
+
+	  useEffect(() => {
+		
+		api.get('/cases/', {headers:{Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMzlkZTZkM2E2NWMyMDVkOGQyYTk4OCIsImlhdCI6MTY2NDczNjkwNywiZXhwIjoxNjY1MzQxNzA3fQ.lp5F3J8Ck1jD127i3uNVRFq5nd1QNqAEXGA2iitggd4`}})
+			  .then(res => {
+				setCases(res.data);
+				//  console.log("Persons" +persons);
+						
+			  })
+			  .catch(function (error) {
+				console.log(error);			
+			  })
+			  ;
+		
+		  }, [])
 
   return (
 	<BrowserRouter>
 		<div className='wrapper'>
 			<Header />
-			<Main officers={officers} setOfficers={setOfficers}/>			
+			<Main officers={officers} setOfficers={setOfficers} cases={cases} setCases={setCases}/>			
+
+			{/* <Main resourceType={resource}/> */}
 			<Footer />
 		</div>
 	</BrowserRouter>

@@ -44,9 +44,7 @@ const Main = (props) => {
 	
 	
 	
-			{/* <Route path={'/tasks/:taskId'}>
-				<TaskDetail {...props} />
-			</Route> */}
+			
 			</Routes>
 					
 				
